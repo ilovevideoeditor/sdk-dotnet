@@ -7,9 +7,15 @@ on:
   pull_request:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # NuGet Trusted Publishing (OIDC)
     steps:
       - uses: actions/checkout@v4
 
@@ -20,18 +26,21 @@ jobs:
       - name: Pack
         run: dotnet pack src/iLoveVideoEditor.Sdk -c Release
 
-      # Requires the NUGET_API_KEY repo secret (nuget.org → account → API Keys).
+      # NuGet Trusted Publishing: exchanges the GitHub OIDC token for a
+      # short-lived API key. Policy registered on nuget.org for this repo +
+      # workflow file (nuget.org → account → Trusted Publishing).
+      - name: NuGet login (OIDC → temp API key)
+        if: startsWith(github.ref, 'refs/tags/v')
+        id: login
+        uses: NuGet/login@v1
+        with:
+          user: ilovevideoeditor
+
       - name: Publish to NuGet (on version tags)
         if: startsWith(github.ref, 'refs/tags/v')
-        env:
-          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
-          if [ -z "$NUGET_API_KEY" ]; then
-            echo "NUGET_API_KEY not set — skipping publish"
-            exit 0
-          fi
           VERSION="${GITHUB_REF_NAME#v}"
           dotnet nuget push "src/iLoveVideoEditor.Sdk/bin/Release/iLoveVideoEditor.Sdk.${VERSION}.nupkg" \
-            --api-key "$NUGET_API_KEY" \
+            --api-key "${{ steps.login.outputs.NUGET_API_KEY }}" \
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
