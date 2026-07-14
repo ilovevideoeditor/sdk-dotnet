@@ -23,9 +23,15 @@ jobs:
       # Requires the NUGET_API_KEY repo secret (nuget.org → account → API Keys).
       - name: Publish to NuGet (on version tags)
         if: startsWith(github.ref, 'refs/tags/v')
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
         run: |
+          if [ -z "$NUGET_API_KEY" ]; then
+            echo "NUGET_API_KEY not set — skipping publish"
+            exit 0
+          fi
           VERSION="${GITHUB_REF_NAME#v}"
           dotnet nuget push "src/iLoveVideoEditor.Sdk/bin/Release/iLoveVideoEditor.Sdk.${VERSION}.nupkg" \
-            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --api-key "$NUGET_API_KEY" \
             --source https://api.nuget.org/v3/index.json \
             --skip-duplicate
