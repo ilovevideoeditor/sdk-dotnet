@@ -1,0 +1,31 @@
+name: nuget
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Pack
+        run: dotnet pack src/iLoveVideoEditor.Sdk -c Release
+
+      # Requires the NUGET_API_KEY repo secret (nuget.org → account → API Keys).
+      - name: Publish to NuGet (on version tags)
+        if: startsWith(github.ref, 'refs/tags/v')
+        run: |
+          VERSION="${GITHUB_REF_NAME#v}"
+          dotnet nuget push "src/iLoveVideoEditor.Sdk/bin/Release/iLoveVideoEditor.Sdk.${VERSION}.nupkg" \
+            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --source https://api.nuget.org/v3/index.json \
+            --skip-duplicate
