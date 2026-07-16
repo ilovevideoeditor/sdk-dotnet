@@ -45,7 +45,7 @@ namespace iLoveVideoEditor.Sdk.Model
         /// <param name="workspaceId">workspaceId (required).</param>
         /// <param name="triggeredBy">triggeredBy.</param>
         /// <param name="trigger">trigger (required).</param>
-        /// <param name="status">status (required).</param>
+        /// <param name="status">&#x60;queued&#x60; → &#x60;running&#x60; → &#x60;completed&#x60; / &#x60;failed&#x60; / &#x60;cancelled&#x60;. A run with a human-in-the-loop &#x60;review&#x60; step pauses in &#x60;waiting_review&#x60; until the step is approved or rejected via &#x60;/v1/workflows/runs/{runId}/steps/{stepId}/review&#x60;. (required).</param>
         /// <param name="variables">variables (required).</param>
         /// <param name="estimatedCost">estimatedCost.</param>
         /// <param name="totalCost">totalCost.</param>
@@ -118,8 +118,9 @@ namespace iLoveVideoEditor.Sdk.Model
         public string Trigger { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// &#x60;queued&#x60; → &#x60;running&#x60; → &#x60;completed&#x60; / &#x60;failed&#x60; / &#x60;cancelled&#x60;. A run with a human-in-the-loop &#x60;review&#x60; step pauses in &#x60;waiting_review&#x60; until the step is approved or rejected via &#x60;/v1/workflows/runs/{runId}/steps/{stepId}/review&#x60;.
         /// </summary>
+        /// <value>&#x60;queued&#x60; → &#x60;running&#x60; → &#x60;completed&#x60; / &#x60;failed&#x60; / &#x60;cancelled&#x60;. A run with a human-in-the-loop &#x60;review&#x60; step pauses in &#x60;waiting_review&#x60; until the step is approved or rejected via &#x60;/v1/workflows/runs/{runId}/steps/{stepId}/review&#x60;.</value>
         [DataMember(Name = "status", IsRequired = true, EmitDefaultValue = true)]
         public string Status { get; set; }
 

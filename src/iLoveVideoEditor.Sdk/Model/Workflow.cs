@@ -47,9 +47,10 @@ namespace iLoveVideoEditor.Sdk.Model
         /// <param name="description">description.</param>
         /// <param name="definition">definition (required).</param>
         /// <param name="isActive">isActive (required).</param>
+        /// <param name="sourcePresetId">Id of the system preset this workflow was imported from (null when built from scratch)..</param>
         /// <param name="createdAt">createdAt (required).</param>
         /// <param name="updatedAt">updatedAt (required).</param>
-        public Workflow(Guid id = default, Guid workspaceId = default, Guid createdBy = default, string name = default, string description = default, WorkflowDefinition definition = default, bool isActive = default, DateTime createdAt = default, DateTime updatedAt = default)
+        public Workflow(Guid id = default, Guid workspaceId = default, Guid createdBy = default, string name = default, string description = default, WorkflowDefinition definition = default, bool isActive = default, string sourcePresetId = default, DateTime createdAt = default, DateTime updatedAt = default)
         {
             this.Id = id;
             this.WorkspaceId = workspaceId;
@@ -70,6 +71,7 @@ namespace iLoveVideoEditor.Sdk.Model
             this.CreatedAt = createdAt;
             this.UpdatedAt = updatedAt;
             this.Description = description;
+            this.SourcePresetId = sourcePresetId;
         }
 
         /// <summary>
@@ -115,6 +117,13 @@ namespace iLoveVideoEditor.Sdk.Model
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// Id of the system preset this workflow was imported from (null when built from scratch).
+        /// </summary>
+        /// <value>Id of the system preset this workflow was imported from (null when built from scratch).</value>
+        [DataMember(Name = "sourcePresetId", EmitDefaultValue = true)]
+        public string SourcePresetId { get; set; }
+
+        /// <summary>
         /// Gets or Sets CreatedAt
         /// </summary>
         [DataMember(Name = "createdAt", IsRequired = true, EmitDefaultValue = true)]
@@ -141,6 +150,7 @@ namespace iLoveVideoEditor.Sdk.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Definition: ").Append(Definition).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  SourcePresetId: ").Append(SourcePresetId).Append("\n");
             sb.Append("  CreatedAt: ").Append(CreatedAt).Append("\n");
             sb.Append("  UpdatedAt: ").Append(UpdatedAt).Append("\n");
             sb.Append("}\n");

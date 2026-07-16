@@ -75,10 +75,16 @@ namespace iLoveVideoEditor.Sdk.Model
             ApplyTool = 6,
 
             /// <summary>
+            /// Enum Review for value: review
+            /// </summary>
+            [EnumMember(Value = "review")]
+            Review = 7,
+
+            /// <summary>
             /// Enum SendToDestination for value: send_to_destination
             /// </summary>
             [EnumMember(Value = "send_to_destination")]
-            SendToDestination = 7
+            SendToDestination = 8
         }
 
 

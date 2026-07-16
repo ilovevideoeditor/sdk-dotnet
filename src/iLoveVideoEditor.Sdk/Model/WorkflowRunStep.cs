@@ -46,7 +46,7 @@ namespace iLoveVideoEditor.Sdk.Model
         /// <param name="stepType">stepType (required).</param>
         /// <param name="name">name.</param>
         /// <param name="config">config.</param>
-        /// <param name="status">status.</param>
+        /// <param name="status">&#x60;pending&#x60; → &#x60;running&#x60; → &#x60;completed&#x60; / &#x60;failed&#x60; / &#x60;skipped&#x60;. A &#x60;review&#x60; step waits in &#x60;waiting&#x60; for a human decision; the run is in &#x60;waiting_review&#x60; while any step is waiting..</param>
         /// <param name="inputUrl">inputUrl.</param>
         /// <param name="outputUrl">outputUrl.</param>
         /// <param name="outputKey">outputKey.</param>
@@ -128,8 +128,9 @@ namespace iLoveVideoEditor.Sdk.Model
         public Object Config { get; set; }
 
         /// <summary>
-        /// Gets or Sets Status
+        /// &#x60;pending&#x60; → &#x60;running&#x60; → &#x60;completed&#x60; / &#x60;failed&#x60; / &#x60;skipped&#x60;. A &#x60;review&#x60; step waits in &#x60;waiting&#x60; for a human decision; the run is in &#x60;waiting_review&#x60; while any step is waiting.
         /// </summary>
+        /// <value>&#x60;pending&#x60; → &#x60;running&#x60; → &#x60;completed&#x60; / &#x60;failed&#x60; / &#x60;skipped&#x60;. A &#x60;review&#x60; step waits in &#x60;waiting&#x60; for a human decision; the run is in &#x60;waiting_review&#x60; while any step is waiting.</value>
         [DataMember(Name = "status", EmitDefaultValue = false)]
         public string Status { get; set; }
 

@@ -102,6 +102,18 @@ namespace iLoveVideoEditor.Sdk.Test.Api
         }
 
         /// <summary>
+        /// Test GetWorkflowPreset
+        /// </summary>
+        [Fact]
+        public void GetWorkflowPresetTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //string id = null;
+            //var response = instance.GetWorkflowPreset(id);
+            //Assert.IsType<GetWorkflowPreset200Response>(response);
+        }
+
+        /// <summary>
         /// Test GetWorkflowRun
         /// </summary>
         [Fact]
@@ -111,6 +123,17 @@ namespace iLoveVideoEditor.Sdk.Test.Api
             //Guid runId = null;
             //var response = instance.GetWorkflowRun(runId);
             //Assert.IsType<GetWorkflowRun200Response>(response);
+        }
+
+        /// <summary>
+        /// Test ListWorkflowPresets
+        /// </summary>
+        [Fact]
+        public void ListWorkflowPresetsTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //var response = instance.ListWorkflowPresets();
+            //Assert.IsType<ListWorkflowPresets200Response>(response);
         }
 
         /// <summary>
@@ -173,6 +196,20 @@ namespace iLoveVideoEditor.Sdk.Test.Api
             //Guid runId = null;
             //Guid stepId = null;
             //var response = instance.RetryWorkflowStep(runId, stepId);
+            //Assert.IsType<UploadAsset200Response>(response);
+        }
+
+        /// <summary>
+        /// Test ReviewWorkflowStep
+        /// </summary>
+        [Fact]
+        public void ReviewWorkflowStepTest()
+        {
+            // TODO uncomment below to test the method and replace null with proper value
+            //Guid runId = null;
+            //Guid stepId = null;
+            //ReviewWorkflowStepRequest reviewWorkflowStepRequest = null;
+            //var response = instance.ReviewWorkflowStep(runId, stepId, reviewWorkflowStepRequest);
             //Assert.IsType<UploadAsset200Response>(response);
         }
 

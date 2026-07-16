@@ -118,6 +118,15 @@ namespace iLoveVideoEditor.Sdk.Test.Model
         }
 
         /// <summary>
+        /// Test the property 'SourcePresetId'
+        /// </summary>
+        [Fact]
+        public void SourcePresetIdTest()
+        {
+            // TODO unit test for the property 'SourcePresetId'
+        }
+
+        /// <summary>
         /// Test the property 'CreatedAt'
         /// </summary>
         [Fact]

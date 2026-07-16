@@ -100,6 +100,24 @@ namespace iLoveVideoEditor.Sdk.Api
         /// <returns>ApiResponse of GetWorkflow200Response</returns>
         ApiResponse<GetWorkflow200Response> GetWorkflowWithHttpInfo(Guid id);
         /// <summary>
+        /// Get a workflow preset
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetWorkflowPreset200Response</returns>
+        GetWorkflowPreset200Response GetWorkflowPreset(string id);
+
+        /// <summary>
+        /// Get a workflow preset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetWorkflowPreset200Response</returns>
+        ApiResponse<GetWorkflowPreset200Response> GetWorkflowPresetWithHttpInfo(string id);
+        /// <summary>
         /// Get a workflow run
         /// </summary>
         /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -117,6 +135,25 @@ namespace iLoveVideoEditor.Sdk.Api
         /// <param name="runId"></param>
         /// <returns>ApiResponse of GetWorkflowRun200Response</returns>
         ApiResponse<GetWorkflowRun200Response> GetWorkflowRunWithHttpInfo(Guid runId);
+        /// <summary>
+        /// List system workflow presets
+        /// </summary>
+        /// <remarks>
+        /// Returns the code-side catalog of ready-made workflow presets (\&quot;Browse workflows\&quot;). Import one by POSTing its definition to /v1/workflows with sourcePresetId set to the preset id.
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWorkflowPresets200Response</returns>
+        ListWorkflowPresets200Response ListWorkflowPresets();
+
+        /// <summary>
+        /// List system workflow presets
+        /// </summary>
+        /// <remarks>
+        /// Returns the code-side catalog of ready-made workflow presets (\&quot;Browse workflows\&quot;). Import one by POSTing its definition to /v1/workflows with sourcePresetId set to the preset id.
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWorkflowPresets200Response</returns>
+        ApiResponse<ListWorkflowPresets200Response> ListWorkflowPresetsWithHttpInfo();
         /// <summary>
         /// List workflow runs
         /// </summary>
@@ -213,6 +250,31 @@ namespace iLoveVideoEditor.Sdk.Api
         /// <param name="stepId"></param>
         /// <returns>ApiResponse of UploadAsset200Response</returns>
         ApiResponse<UploadAsset200Response> RetryWorkflowStepWithHttpInfo(Guid runId, Guid stepId);
+        /// <summary>
+        /// Approve or reject a paused review step
+        /// </summary>
+        /// <remarks>
+        /// Resolves a human-in-the-loop &#x60;review&#x60; step that is waiting for input (the run is in &#x60;waiting_review&#x60; status). Approving resumes the run; rejecting cancels it. Optionally edits run variables before resuming — only keys listed in the step&#39;s &#x60;editableVariables&#x60; are accepted.
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="stepId"></param>
+        /// <param name="reviewWorkflowStepRequest"></param>
+        /// <returns>UploadAsset200Response</returns>
+        UploadAsset200Response ReviewWorkflowStep(Guid runId, Guid stepId, ReviewWorkflowStepRequest reviewWorkflowStepRequest);
+
+        /// <summary>
+        /// Approve or reject a paused review step
+        /// </summary>
+        /// <remarks>
+        /// Resolves a human-in-the-loop &#x60;review&#x60; step that is waiting for input (the run is in &#x60;waiting_review&#x60; status). Approving resumes the run; rejecting cancels it. Optionally edits run variables before resuming — only keys listed in the step&#39;s &#x60;editableVariables&#x60; are accepted.
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="stepId"></param>
+        /// <param name="reviewWorkflowStepRequest"></param>
+        /// <returns>ApiResponse of UploadAsset200Response</returns>
+        ApiResponse<UploadAsset200Response> ReviewWorkflowStepWithHttpInfo(Guid runId, Guid stepId, ReviewWorkflowStepRequest reviewWorkflowStepRequest);
         /// <summary>
         /// Run a workflow
         /// </summary>
@@ -375,6 +437,29 @@ namespace iLoveVideoEditor.Sdk.Api
         /// <returns>Task of ApiResponse (GetWorkflow200Response)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetWorkflow200Response>> GetWorkflowWithHttpInfoAsync(Guid id, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
+        /// Get a workflow preset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowPreset200Response</returns>
+        System.Threading.Tasks.Task<GetWorkflowPreset200Response> GetWorkflowPresetAsync(string id, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Get a workflow preset
+        /// </summary>
+        /// <remarks>
+        /// 
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowPreset200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<GetWorkflowPreset200Response>> GetWorkflowPresetWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
         /// Get a workflow run
         /// </summary>
         /// <remarks>
@@ -397,6 +482,27 @@ namespace iLoveVideoEditor.Sdk.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (GetWorkflowRun200Response)</returns>
         System.Threading.Tasks.Task<ApiResponse<GetWorkflowRun200Response>> GetWorkflowRunWithHttpInfoAsync(Guid runId, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// List system workflow presets
+        /// </summary>
+        /// <remarks>
+        /// Returns the code-side catalog of ready-made workflow presets (\&quot;Browse workflows\&quot;). Import one by POSTing its definition to /v1/workflows with sourcePresetId set to the preset id.
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowPresets200Response</returns>
+        System.Threading.Tasks.Task<ListWorkflowPresets200Response> ListWorkflowPresetsAsync(System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// List system workflow presets
+        /// </summary>
+        /// <remarks>
+        /// Returns the code-side catalog of ready-made workflow presets (\&quot;Browse workflows\&quot;). Import one by POSTing its definition to /v1/workflows with sourcePresetId set to the preset id.
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowPresets200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ListWorkflowPresets200Response>> ListWorkflowPresetsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// List workflow runs
         /// </summary>
@@ -518,6 +624,33 @@ namespace iLoveVideoEditor.Sdk.Api
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
         /// <returns>Task of ApiResponse (UploadAsset200Response)</returns>
         System.Threading.Tasks.Task<ApiResponse<UploadAsset200Response>> RetryWorkflowStepWithHttpInfoAsync(Guid runId, Guid stepId, System.Threading.CancellationToken cancellationToken = default);
+        /// <summary>
+        /// Approve or reject a paused review step
+        /// </summary>
+        /// <remarks>
+        /// Resolves a human-in-the-loop &#x60;review&#x60; step that is waiting for input (the run is in &#x60;waiting_review&#x60; status). Approving resumes the run; rejecting cancels it. Optionally edits run variables before resuming — only keys listed in the step&#39;s &#x60;editableVariables&#x60; are accepted.
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="stepId"></param>
+        /// <param name="reviewWorkflowStepRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UploadAsset200Response</returns>
+        System.Threading.Tasks.Task<UploadAsset200Response> ReviewWorkflowStepAsync(Guid runId, Guid stepId, ReviewWorkflowStepRequest reviewWorkflowStepRequest, System.Threading.CancellationToken cancellationToken = default);
+
+        /// <summary>
+        /// Approve or reject a paused review step
+        /// </summary>
+        /// <remarks>
+        /// Resolves a human-in-the-loop &#x60;review&#x60; step that is waiting for input (the run is in &#x60;waiting_review&#x60; status). Approving resumes the run; rejecting cancels it. Optionally edits run variables before resuming — only keys listed in the step&#39;s &#x60;editableVariables&#x60; are accepted.
+        /// </remarks>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="stepId"></param>
+        /// <param name="reviewWorkflowStepRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UploadAsset200Response)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UploadAsset200Response>> ReviewWorkflowStepWithHttpInfoAsync(Guid runId, Guid stepId, ReviewWorkflowStepRequest reviewWorkflowStepRequest, System.Threading.CancellationToken cancellationToken = default);
         /// <summary>
         /// Run a workflow
         /// </summary>
@@ -1333,6 +1466,143 @@ namespace iLoveVideoEditor.Sdk.Api
         }
 
         /// <summary>
+        /// Get a workflow preset 
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>GetWorkflowPreset200Response</returns>
+        public GetWorkflowPreset200Response GetWorkflowPreset(string id)
+        {
+            iLoveVideoEditor.Sdk.Client.ApiResponse<GetWorkflowPreset200Response> localVarResponse = GetWorkflowPresetWithHttpInfo(id);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a workflow preset 
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <returns>ApiResponse of GetWorkflowPreset200Response</returns>
+        public iLoveVideoEditor.Sdk.Client.ApiResponse<GetWorkflowPreset200Response> GetWorkflowPresetWithHttpInfo(string id)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new iLoveVideoEditor.Sdk.Client.ApiException(400, "Missing required parameter 'id' when calling WorkflowsApi->GetWorkflowPreset");
+
+            iLoveVideoEditor.Sdk.Client.RequestOptions localVarRequestOptions = new iLoveVideoEditor.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("id", iLoveVideoEditor.Sdk.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<GetWorkflowPreset200Response>("/v1/workflows/presets/{id}", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowPreset", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Get a workflow preset 
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of GetWorkflowPreset200Response</returns>
+        public async System.Threading.Tasks.Task<GetWorkflowPreset200Response> GetWorkflowPresetAsync(string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            iLoveVideoEditor.Sdk.Client.ApiResponse<GetWorkflowPreset200Response> localVarResponse = await GetWorkflowPresetWithHttpInfoAsync(id, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Get a workflow preset 
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="id"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (GetWorkflowPreset200Response)</returns>
+        public async System.Threading.Tasks.Task<iLoveVideoEditor.Sdk.Client.ApiResponse<GetWorkflowPreset200Response>> GetWorkflowPresetWithHttpInfoAsync(string id, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'id' is set
+            if (id == null)
+                throw new iLoveVideoEditor.Sdk.Client.ApiException(400, "Missing required parameter 'id' when calling WorkflowsApi->GetWorkflowPreset");
+
+
+            iLoveVideoEditor.Sdk.Client.RequestOptions localVarRequestOptions = new iLoveVideoEditor.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("id", iLoveVideoEditor.Sdk.Client.ClientUtils.ParameterToString(id)); // path parameter
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<GetWorkflowPreset200Response>("/v1/workflows/presets/{id}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("GetWorkflowPreset", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
         /// Get a workflow run 
         /// </summary>
         /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
@@ -1455,6 +1725,129 @@ namespace iLoveVideoEditor.Sdk.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("GetWorkflowRun", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List system workflow presets Returns the code-side catalog of ready-made workflow presets (\&quot;Browse workflows\&quot;). Import one by POSTing its definition to /v1/workflows with sourcePresetId set to the preset id.
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ListWorkflowPresets200Response</returns>
+        public ListWorkflowPresets200Response ListWorkflowPresets()
+        {
+            iLoveVideoEditor.Sdk.Client.ApiResponse<ListWorkflowPresets200Response> localVarResponse = ListWorkflowPresetsWithHttpInfo();
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List system workflow presets Returns the code-side catalog of ready-made workflow presets (\&quot;Browse workflows\&quot;). Import one by POSTing its definition to /v1/workflows with sourcePresetId set to the preset id.
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <returns>ApiResponse of ListWorkflowPresets200Response</returns>
+        public iLoveVideoEditor.Sdk.Client.ApiResponse<ListWorkflowPresets200Response> ListWorkflowPresetsWithHttpInfo()
+        {
+            iLoveVideoEditor.Sdk.Client.RequestOptions localVarRequestOptions = new iLoveVideoEditor.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Get<ListWorkflowPresets200Response>("/v1/workflows/presets", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowPresets", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// List system workflow presets Returns the code-side catalog of ready-made workflow presets (\&quot;Browse workflows\&quot;). Import one by POSTing its definition to /v1/workflows with sourcePresetId set to the preset id.
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ListWorkflowPresets200Response</returns>
+        public async System.Threading.Tasks.Task<ListWorkflowPresets200Response> ListWorkflowPresetsAsync(System.Threading.CancellationToken cancellationToken = default)
+        {
+            iLoveVideoEditor.Sdk.Client.ApiResponse<ListWorkflowPresets200Response> localVarResponse = await ListWorkflowPresetsWithHttpInfoAsync(cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// List system workflow presets Returns the code-side catalog of ready-made workflow presets (\&quot;Browse workflows\&quot;). Import one by POSTing its definition to /v1/workflows with sourcePresetId set to the preset id.
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (ListWorkflowPresets200Response)</returns>
+        public async System.Threading.Tasks.Task<iLoveVideoEditor.Sdk.Client.ApiResponse<ListWorkflowPresets200Response>> ListWorkflowPresetsWithHttpInfoAsync(System.Threading.CancellationToken cancellationToken = default)
+        {
+
+            iLoveVideoEditor.Sdk.Client.RequestOptions localVarRequestOptions = new iLoveVideoEditor.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.GetAsync<ListWorkflowPresets200Response>("/v1/workflows/presets", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ListWorkflowPresets", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 
@@ -2142,6 +2535,157 @@ namespace iLoveVideoEditor.Sdk.Api
             if (this.ExceptionFactory != null)
             {
                 Exception _exception = this.ExceptionFactory("RetryWorkflowStep", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Approve or reject a paused review step Resolves a human-in-the-loop &#x60;review&#x60; step that is waiting for input (the run is in &#x60;waiting_review&#x60; status). Approving resumes the run; rejecting cancels it. Optionally edits run variables before resuming — only keys listed in the step&#39;s &#x60;editableVariables&#x60; are accepted.
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="stepId"></param>
+        /// <param name="reviewWorkflowStepRequest"></param>
+        /// <returns>UploadAsset200Response</returns>
+        public UploadAsset200Response ReviewWorkflowStep(Guid runId, Guid stepId, ReviewWorkflowStepRequest reviewWorkflowStepRequest)
+        {
+            iLoveVideoEditor.Sdk.Client.ApiResponse<UploadAsset200Response> localVarResponse = ReviewWorkflowStepWithHttpInfo(runId, stepId, reviewWorkflowStepRequest);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Approve or reject a paused review step Resolves a human-in-the-loop &#x60;review&#x60; step that is waiting for input (the run is in &#x60;waiting_review&#x60; status). Approving resumes the run; rejecting cancels it. Optionally edits run variables before resuming — only keys listed in the step&#39;s &#x60;editableVariables&#x60; are accepted.
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="stepId"></param>
+        /// <param name="reviewWorkflowStepRequest"></param>
+        /// <returns>ApiResponse of UploadAsset200Response</returns>
+        public iLoveVideoEditor.Sdk.Client.ApiResponse<UploadAsset200Response> ReviewWorkflowStepWithHttpInfo(Guid runId, Guid stepId, ReviewWorkflowStepRequest reviewWorkflowStepRequest)
+        {
+            // verify the required parameter 'reviewWorkflowStepRequest' is set
+            if (reviewWorkflowStepRequest == null)
+                throw new iLoveVideoEditor.Sdk.Client.ApiException(400, "Missing required parameter 'reviewWorkflowStepRequest' when calling WorkflowsApi->ReviewWorkflowStep");
+
+            iLoveVideoEditor.Sdk.Client.RequestOptions localVarRequestOptions = new iLoveVideoEditor.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+            var localVarContentType = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("runId", iLoveVideoEditor.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("stepId", iLoveVideoEditor.Sdk.Client.ClientUtils.ParameterToString(stepId)); // path parameter
+            localVarRequestOptions.Data = reviewWorkflowStepRequest;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+            var localVarResponse = this.Client.Post<UploadAsset200Response>("/v1/workflows/runs/{runId}/steps/{stepId}/review", localVarRequestOptions, this.Configuration);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReviewWorkflowStep", localVarResponse);
+                if (_exception != null) throw _exception;
+            }
+
+            return localVarResponse;
+        }
+
+        /// <summary>
+        /// Approve or reject a paused review step Resolves a human-in-the-loop &#x60;review&#x60; step that is waiting for input (the run is in &#x60;waiting_review&#x60; status). Approving resumes the run; rejecting cancels it. Optionally edits run variables before resuming — only keys listed in the step&#39;s &#x60;editableVariables&#x60; are accepted.
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="stepId"></param>
+        /// <param name="reviewWorkflowStepRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of UploadAsset200Response</returns>
+        public async System.Threading.Tasks.Task<UploadAsset200Response> ReviewWorkflowStepAsync(Guid runId, Guid stepId, ReviewWorkflowStepRequest reviewWorkflowStepRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            iLoveVideoEditor.Sdk.Client.ApiResponse<UploadAsset200Response> localVarResponse = await ReviewWorkflowStepWithHttpInfoAsync(runId, stepId, reviewWorkflowStepRequest, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
+        }
+
+        /// <summary>
+        /// Approve or reject a paused review step Resolves a human-in-the-loop &#x60;review&#x60; step that is waiting for input (the run is in &#x60;waiting_review&#x60; status). Approving resumes the run; rejecting cancels it. Optionally edits run variables before resuming — only keys listed in the step&#39;s &#x60;editableVariables&#x60; are accepted.
+        /// </summary>
+        /// <exception cref="iLoveVideoEditor.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
+        /// <param name="runId"></param>
+        /// <param name="stepId"></param>
+        /// <param name="reviewWorkflowStepRequest"></param>
+        /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
+        /// <returns>Task of ApiResponse (UploadAsset200Response)</returns>
+        public async System.Threading.Tasks.Task<iLoveVideoEditor.Sdk.Client.ApiResponse<UploadAsset200Response>> ReviewWorkflowStepWithHttpInfoAsync(Guid runId, Guid stepId, ReviewWorkflowStepRequest reviewWorkflowStepRequest, System.Threading.CancellationToken cancellationToken = default)
+        {
+            // verify the required parameter 'reviewWorkflowStepRequest' is set
+            if (reviewWorkflowStepRequest == null)
+                throw new iLoveVideoEditor.Sdk.Client.ApiException(400, "Missing required parameter 'reviewWorkflowStepRequest' when calling WorkflowsApi->ReviewWorkflowStep");
+
+
+            iLoveVideoEditor.Sdk.Client.RequestOptions localVarRequestOptions = new iLoveVideoEditor.Sdk.Client.RequestOptions();
+
+            string[] _contentTypes = new string[] {
+                "application/json"
+            };
+
+            // to determine the Accept header
+            string[] _accepts = new string[] {
+                "application/json"
+            };
+
+
+            var localVarContentType = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
+            if (localVarContentType != null) localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
+
+            var localVarAccept = iLoveVideoEditor.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
+            if (localVarAccept != null) localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
+
+            localVarRequestOptions.PathParameters.Add("runId", iLoveVideoEditor.Sdk.Client.ClientUtils.ParameterToString(runId)); // path parameter
+            localVarRequestOptions.PathParameters.Add("stepId", iLoveVideoEditor.Sdk.Client.ClientUtils.ParameterToString(stepId)); // path parameter
+            localVarRequestOptions.Data = reviewWorkflowStepRequest;
+
+            // authentication (ApiKeyAuth) required
+            if (!string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("x-api-key")))
+            {
+                localVarRequestOptions.HeaderParameters.Add("x-api-key", this.Configuration.GetApiKeyWithPrefix("x-api-key"));
+            }
+            // authentication (BearerAuth) required
+            // bearer authentication required
+            if (!string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
+            }
+
+            // make the HTTP request
+
+            var localVarResponse = await this.AsynchronousClient.PostAsync<UploadAsset200Response>("/v1/workflows/runs/{runId}/steps/{stepId}/review", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+
+            if (this.ExceptionFactory != null)
+            {
+                Exception _exception = this.ExceptionFactory("ReviewWorkflowStep", localVarResponse);
                 if (_exception != null) throw _exception;
             }
 

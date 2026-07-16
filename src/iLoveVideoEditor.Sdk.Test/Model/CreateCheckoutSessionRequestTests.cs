@@ -89,5 +89,14 @@ namespace iLoveVideoEditor.Sdk.Test.Model
         {
             // TODO unit test for the property 'Credits'
         }
+
+        /// <summary>
+        /// Test the property 'AmountEur'
+        /// </summary>
+        [Fact]
+        public void AmountEurTest()
+        {
+            // TODO unit test for the property 'AmountEur'
+        }
     }
 }

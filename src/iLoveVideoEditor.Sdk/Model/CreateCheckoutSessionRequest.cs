@@ -101,12 +101,14 @@ namespace iLoveVideoEditor.Sdk.Model
         /// <param name="tierId">tierId.</param>
         /// <param name="mode">mode.</param>
         /// <param name="credits">credits.</param>
-        public CreateCheckoutSessionRequest(string productId = default, TierIdEnum? tierId = default, ModeEnum? mode = default, int credits = default)
+        /// <param name="amountEur">Custom credit top-up amount in EUR (&#x60;mode&#x3D;payment&#x60; only). Between 10 and 2500, at most 2 decimal places. When set, the pay-what-you-want credits product is used and any &#x60;productId&#x60; is ignored..</param>
+        public CreateCheckoutSessionRequest(string productId = default, TierIdEnum? tierId = default, ModeEnum? mode = default, int credits = default, decimal amountEur = default)
         {
             this.ProductId = productId;
             this.TierId = tierId;
             this.Mode = mode;
             this.Credits = credits;
+            this.AmountEur = amountEur;
         }
 
         /// <summary>
@@ -122,6 +124,13 @@ namespace iLoveVideoEditor.Sdk.Model
         public int Credits { get; set; }
 
         /// <summary>
+        /// Custom credit top-up amount in EUR (&#x60;mode&#x3D;payment&#x60; only). Between 10 and 2500, at most 2 decimal places. When set, the pay-what-you-want credits product is used and any &#x60;productId&#x60; is ignored.
+        /// </summary>
+        /// <value>Custom credit top-up amount in EUR (&#x60;mode&#x3D;payment&#x60; only). Between 10 and 2500, at most 2 decimal places. When set, the pay-what-you-want credits product is used and any &#x60;productId&#x60; is ignored.</value>
+        [DataMember(Name = "amountEur", EmitDefaultValue = false)]
+        public decimal AmountEur { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -133,6 +142,7 @@ namespace iLoveVideoEditor.Sdk.Model
             sb.Append("  TierId: ").Append(TierId).Append("\n");
             sb.Append("  Mode: ").Append(Mode).Append("\n");
             sb.Append("  Credits: ").Append(Credits).Append("\n");
+            sb.Append("  AmountEur: ").Append(AmountEur).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }

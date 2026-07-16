@@ -44,7 +44,8 @@ namespace iLoveVideoEditor.Sdk.Model
         /// <param name="description">description.</param>
         /// <param name="definition">definition (required).</param>
         /// <param name="isActive">isActive.</param>
-        public CreateWorkflowRequest(string name = default, string description = default, WorkflowDefinition definition = default, bool isActive = default)
+        /// <param name="sourcePresetId">Optional id of a system preset from /v1/workflows/presets this workflow is imported from..</param>
+        public CreateWorkflowRequest(string name = default, string description = default, WorkflowDefinition definition = default, bool isActive = default, string sourcePresetId = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -60,6 +61,7 @@ namespace iLoveVideoEditor.Sdk.Model
             this.Definition = definition;
             this.Description = description;
             this.IsActive = isActive;
+            this.SourcePresetId = sourcePresetId;
         }
 
         /// <summary>
@@ -87,6 +89,13 @@ namespace iLoveVideoEditor.Sdk.Model
         public bool IsActive { get; set; }
 
         /// <summary>
+        /// Optional id of a system preset from /v1/workflows/presets this workflow is imported from.
+        /// </summary>
+        /// <value>Optional id of a system preset from /v1/workflows/presets this workflow is imported from.</value>
+        [DataMember(Name = "sourcePresetId", EmitDefaultValue = false)]
+        public string SourcePresetId { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -98,6 +107,7 @@ namespace iLoveVideoEditor.Sdk.Model
             sb.Append("  Description: ").Append(Description).Append("\n");
             sb.Append("  Definition: ").Append(Definition).Append("\n");
             sb.Append("  IsActive: ").Append(IsActive).Append("\n");
+            sb.Append("  SourcePresetId: ").Append(SourcePresetId).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
